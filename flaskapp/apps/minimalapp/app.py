@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, current_app, g
+from flask import Flask, current_app, g, render_template, url_for, request
 
 app = Flask( __name__)
 
@@ -14,7 +14,7 @@ def hello(name):
 
 @app.route( "/name/<name>" )
 def show_name( name ):
-    # Ďđev[gGWÉnˇ
+    # 変数をテンプレートエンジンに渡す
     return render_template( "index.html", name = name )
 
 with app.test_request_context():
@@ -22,10 +22,13 @@ with app.test_request_context():
     print ( url_for( "hello-endpoint", name = "world" ) )
     print ( url_for( "show_name", name = "ichiro", page = "1" ) )
     
-ctx = app.app_context()
-ctx.push()
+# ctx = app.app_context()
+# ctx.push()
 
-print ( current_app.name )
+# print ( current_app.name )
 
-g.connection = "connection"
-print ( g.connection )
+# g.connection = "connection"
+# print ( g.connection )
+with app.test_request_context ( "/users?update = true" ):
+    # trueが出力される
+    print ( request.args.get( "updated" ) )
