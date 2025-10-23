@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="ja">
- <head>
-  <meta charset="UTF-8" />
-  <title>Name</title>
-  <link
-    rel="stylesheet"
-    href="{{ url_for('static', filename='style.css') }}"
-  />
- </head>
-
- <body>
-  <!--{{ name }}を追加する-->
-  <h1>Name:{{ name }}</h1>
- <body>
-<html>
+<html lang = "ja">
+    <head>
+        <meta character = "UTF-8"/>
+        <title>Name</title>
+        <!-- スタイルシートの参照 -->
+        <link
+            rel = "stylesheet"
+            href = {{ url_for( 'static', filename = 'style.css' ) }}
+        />
+    </head>
+    <body>
+        <p>Name: {{ name }}</p>
+    </body>
+</html>

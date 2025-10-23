@@ -44,4 +44,10 @@ def contact_complete():
 		flash( "問い合わせ内容はメールにて送信しました。問い合わせありがとうございました。" )
 		return redirect ( url_for ( "contact_complete" ) )
 	return render_template ( "contact_complete.html" )
-	
+
+def create_app():
+	# Flaskインスタンス生成
+	app = Flask( __name__ )
+	from apps.crud import views as crud_views
+	app.register_blueprint( crud_views.crud, url_prefix = "/crud" )
+	return app
